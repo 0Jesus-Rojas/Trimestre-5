@@ -57,7 +57,7 @@ public class ActividadesDAO {
              insertar = true;
              System.out.println("Actividad registrada");
          }catch(Exception e){
-             System.out.println("Errir al registrar la actividad" + e.getMessage());
+             System.out.println("Error al registrar la actividad" + e.getMessage());
          }
          return insertar;
     }

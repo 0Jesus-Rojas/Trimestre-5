@@ -44,4 +44,23 @@ public class AulaDAO {
         }
         return miAula;
     }
+    public boolean InsertarAula(Aula miAula){
+        boolean insertar = false;
+        Connection conn = conect.getconn();
+        
+        try{
+            String querySql = "INSERT INTO aulas(numero_aula, capacidad) VALUES (?, ?)";
+            
+            PreparedStatement ps = conn.prepareStatement(querySql);
+            ps.setInt(1, miAula.getNumeroAula());
+            ps.setInt(2, miAula.getCapacidad());
+            
+            ps.executeUpdate();
+            insertar = true;
+            System.out.println("Aula registrada");
+        }catch(Exception e){
+            System.out.println("Error al registrar el aula");
+        }
+        return insertar;
+    }
 }
