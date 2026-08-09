@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 
 /**
- *
+ * jelou
  * @author Aprendiz
  */
 public class ActividadesDAO {
