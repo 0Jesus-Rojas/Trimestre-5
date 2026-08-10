@@ -15,26 +15,26 @@ import java.sql.ResultSet;
  * @author Aprendiz
  */
 public class UsuarioDAO {
-    
+
     private Conexion conect = new Conexion();
-    
-    public Usuario consularUsuario(String correo){
+
+    public Usuario consularUsuario(String correo) {
         Connection conn = conect.getconn();
-        
+
         Usuario miUsuario = null;
-        
+
         try {
             String querySql = "SELECT id_usuario, nombre, apellido, numero_documento, telefono, correo, "
-                    +"tipo_documento_id_tipo_documento, id_rol, contrasena FROM usuario WHERE correo = ?";
-            
+                    + "tipo_documento_id_tipo_documento, id_rol, contrasena FROM usuario WHERE correo = ?";
+
             PreparedStatement ps = conn.prepareStatement(querySql);
-            
-            ps.setString(1,correo);
-            
+
+            ps.setString(1, correo);
+
             ResultSet rs = ps.executeQuery();
-            if (rs.next()){
+            if (rs.next()) {
                 miUsuario = new Usuario();
-                
+
                 miUsuario.setIdUsuario(rs.getInt("id_usuario"));
                 miUsuario.setNombre(rs.getString("nombre"));
                 miUsuario.setApellido(rs.getString("apellido"));
@@ -51,29 +51,110 @@ public class UsuarioDAO {
         }
         return miUsuario;
     }
-            public boolean InsertarUsuario(Usuario miUsuario){
-                boolean insertar = false;
-                Connection conn = conect.getconn();
-                
-                try{
-                    String querySql = "INSERT INTO Usuario (nombre, apellido, numero_documento, telefono, correo, tipo_documento_id_tipo_documento, id_rol, contrasena) VALUES (?,?,?,?,?,?,?,?)";
-                            
-                    PreparedStatement ps = conn.prepareStatement(querySql);
-                    ps.setString(1,miUsuario.getNombre());
-                    ps.setString(2,miUsuario.getApellido());
-                    ps.setString(3,miUsuario.getNumeroDocumento());
-                    ps.setString(4,miUsuario.getTelefono());
-                    ps.setString(5, miUsuario.getCorreo());
-                    ps.setInt(6, miUsuario.getTipoDocumentoIdTipoDocumento());
-                    ps.setInt(7, miUsuario.getIdRol());
-                    ps.setString(8, miUsuario.getContrasena());
-                    
-                    ps.executeUpdate();
-                    insertar = true;
-                    System.out.println("Dato Insertado");
-                }catch(Exception e){
-                    System.out.println("Error al insertar usuario, " + e.getMessage());
-                }
-                return insertar;
+
+    public boolean InsertarUsuario(Usuario miUsuario) {
+        boolean insertar = false;
+        Connection conn = conect.getconn();
+
+        try {
+            String querySql = "INSERT INTO Usuario (nombre, apellido, numero_documento, telefono, correo, tipo_documento_id_tipo_documento, id_rol, contrasena) VALUES (?,?,?,?,?,?,?,?)";
+
+            PreparedStatement ps = conn.prepareStatement(querySql);
+            ps.setString(1, miUsuario.getNombre());
+            ps.setString(2, miUsuario.getApellido());
+            ps.setString(3, miUsuario.getNumeroDocumento());
+            ps.setString(4, miUsuario.getTelefono());
+            ps.setString(5, miUsuario.getCorreo());
+            ps.setInt(6, miUsuario.getTipoDocumentoIdTipoDocumento());
+            ps.setInt(7, miUsuario.getIdRol());
+            ps.setString(8, miUsuario.getContrasena());
+
+            ps.executeUpdate();
+            insertar = true;
+            System.out.println("Dato Insertado");
+        } catch (SQLException e) {
+            System.out.println("Error al insertar usuario, " + e.getMessage());
+        }
+        return insertar;
+    }
+    public boolean actualizarUsuario(Usuario miUsuario){
+        boolean actualizar = false;
+        Connection conn = conect.getconn();
+        
+        try{
+            String querySql = "UPDATE usuario set nombre = ?, apellido = ?, numero_documento = ?, telefono = ?, correo = ?, contrasena = ? WHERE id_usuario = ?";
+            PreparedStatement ps = conn.prepareStatement(querySql);
+            ps.setString(1, miUsuario.getNombre());
+            ps.setString(2, miUsuario.getApellido());
+            ps.setString(3, miUsuario.getNumeroDocumento());
+            ps.setString(4, miUsuario.getTelefono());
+            ps.setString(5, miUsuario.getCorreo());
+            ps.setString(6, miUsuario.getContrasena());
+            ps.setInt(7, miUsuario.getIdUsuario());
+    
+            
+            int filasAfectadas = ps.executeUpdate();
+            
+            if (filasAfectadas > 0){
+                actualizar = true;
+            }else{
+                System.out.println("No se encontro el ID");
             }
+        }catch(SQLException e){
+            System.out.println("Error: " + e.getMessage());
+        }
+        return actualizar;
+    }
+    public boolean inactivarUsuario(int id){
+        boolean inactivar = false;
+        String querySql = "UPDATE usuario SET estado = 0 WHERE id_usuario = ?";
+        Connection conn = conect.getconn();
+        
+        try{
+            PreparedStatement ps = conn.prepareStatement(querySql);
+            ps.setInt(1,id);
+            if(ps.executeUpdate() > 0){
+                inactivar = true;
+            }
+        }catch(Exception e){
+            System.out.println("Error al inactivar el usuario");
+        }
+        return inactivar;
+    }
+    public boolean ActivarUsuario(int id){
+        boolean activar = true;
+        String querySql = "UPDATE usuario SET estado = 1 WHERE id_usuario = ?";
+        Connection conn = conect.getconn();
+        
+        try{
+            PreparedStatement ps = conn.prepareStatement(querySql);
+            ps.setInt(1, id);
+            if(ps.executeUpdate() < 1){
+                activar = true;
+            }
+        }catch(Exception e){
+            System.out.println("No se pudo activar el estado" + e.getMessage());
+        }
+        return activar;
+    }
+    public boolean eliminarUsuario(int id){
+        boolean eliminar = false;
+        
+        String querySql = "DELETE FROM usuario WHERE id_usuario = ?";
+        Connection conn = conect.getconn();
+        
+        try{
+            PreparedStatement ps = conn.prepareStatement(querySql);
+            ps.setInt(1, id);
+            int filaAfectada = ps.executeUpdate();
+            if(filaAfectada > 0){
+                eliminar = true;
+            }else{
+                System.out.println("No se encontro el ID del usuario");
+            }
+        }catch(SQLException e){
+            System.out.println("No se pudo eliminar el usuario: " + e.getMessage());
+        }
+        return eliminar;
+    }
 }

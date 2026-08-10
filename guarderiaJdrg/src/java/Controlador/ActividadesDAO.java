@@ -57,7 +57,7 @@ public class ActividadesDAO {
             ps.executeUpdate();
             insertar = true;
             System.out.println("Actividad registrada");
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Error al registrar la actividad" + e.getMessage());
         }
         return insertar;
