@@ -26,29 +26,29 @@ INSERT INTO `aulas` (`id_aulas`, `numero_aula`, `capacidad`) VALUES
 (5, 105, 20);
 
 -- 4. USUARIOS (20 registros: 5 Docentes, 15 Acudientes)
-INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `numero_documento`, `telefono`, `correo`, `tipo_documento_id_tipo_documento`, `id_rol`) VALUES
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `numero_documento`, `telefono`, `correo`, `tipo_documento_id_tipo_documento`, `id_rol`, `contrasena`, `estado`) VALUES
 -- 5 Docentes (IDs 1 al 5 | rol_id = 1)
-(1, 'Maria', 'Rodriguez', '10010001', '3001112233', 'maria.docente@guarderia.com', 1, 1),
-(2, 'Juan', 'Perez', '10010002', '3001112234', 'juan.docente@guarderia.com', 1, 1),
-(3, 'Ana', 'Gomez', '10010003', '3001112235', 'ana.docente@guarderia.com', 1, 1),
-(4, 'Carlos', 'Lopez', '10010004', '3001112236', 'carlos.docente@guarderia.com', 1, 1),
-(5, 'Laura', 'Martinez', '10010005', '3001112237', 'laura.docente@guarderia.com', 1, 1),
+(1, 'Maria', 'Rodriguez', '10010001', '3001112233', 'maria.docente@guarderia.com', 1, 1, 'paswor', 1),
+(2, 'Juan', 'Perez', '10010002', '3001112234', 'juan.docente@guarderia.com', 1, 1,'123142', 1),
+(3, 'Ana', 'Gomez', '10010003', '3001112235', 'ana.docente@guarderia.com', 1, 1, 'asd124', 1),
+(4, 'Carlos', 'Lopez', '10010004', '3001112236', 'carlos.docente@guarderia.com', 1, 1, '123asfd', 1),
+(5, 'Laura', 'Martinez', '10010005', '3001112237', 'laura.docente@guarderia.com', 1, 1, '1243', 1),
 -- 15 Acudientes (IDs 6 al 20 | rol_id = 2)
-(6, 'Pedro', 'Sanchez', '10010006', '3101112201', 'pedro.acudiente@mail.com', 1, 2),
-(7, 'Sofia', 'Torres', '10010007', '3101112202', 'sofia.acudiente@mail.com', 1, 2),
-(8, 'Diego', 'Ramirez', '10010008', '3101112203', 'diego.acudiente@mail.com', 1, 2),
-(9, 'Lucia', 'Flores', '10010009', '3101112204', 'lucia.acudiente@mail.com', 1, 2),
-(10, 'Gabriel', 'Morales', '10010010', '3101112205', 'gabriel.acudiente@mail.com', 1, 2),
-(11, 'Elena', 'Castro', '10010011', '3101112206', 'elena.acudiente@mail.com', 1, 2),
-(12, 'Fernando', 'Ortiz', '10010012', '3101112207', 'fernando.acudiente@mail.com', 1, 2),
-(13, 'Patricia', 'Gutierrez', '10010013', '3101112208', 'patricia.acudiente@mail.com', 1, 2),
-(14, 'Javier', 'Chavez', '10010014', '3101112209', 'javier.acudiente@mail.com', 1, 2),
-(15, 'Camila', 'Rios', '10010015', '3101112210', 'camila.acudiente@mail.com', 1, 2),
-(16, 'Andres', 'Mendoza', '10010016', '3101112211', 'andres.acudiente@mail.com', 1, 2),
-(17, 'Paula', 'Aguilar', '10010017', '3101112212', 'paula.acudiente@mail.com', 1, 2),
-(18, 'Santiago', 'Vega', '10010018', '3101112213', 'santiago.acudiente@mail.com', 1, 2),
-(19, 'Valeria', 'Silva', '10010019', '3101112214', 'valeria.acudiente@mail.com', 1, 2),
-(20, 'Mateo', 'Rojas', '10010020', '3101112215', 'mateo.acudiente@mail.com', 1, 2);
+(6, 'Pedro', 'Sanchez', '10010006', '3101112201', 'pedro.acudiente@mail.com', 1, 2, 'fgds1432', 1),
+(7, 'Sofia', 'Torres', '10010007', '3101112202', 'sofia.acudiente@mail.com', 1, 2, 'fwD3TE', 1),
+(8, 'Diego', 'Ramirez', '10010008', '3101112203', 'diego.acudiente@mail.com', 1, 2, '5243sfghd', 1),
+(9, 'Lucia', 'Flores', '10010009', '3101112204', 'lucia.acudiente@mail.com', 1, 2, 'jelou', 1),
+(10, 'Gabriel', 'Morales', '10010010', '3101112205', 'gabriel.acudiente@mail.com', 1, 2, 'asdqawe', 1),
+(11, 'Elena', 'Castro', '10010011', '3101112206', 'elena.acudiente@mail.com', 1, 2, '', 1),
+(12, 'Fernando', 'Ortiz', '10010012', '3101112207', 'fernando.acudiente@mail.com', 1, 2 ,'uklijluh', 1),
+(13, 'Patricia', 'Gutierrez', '10010013', '3101112208', 'patricia.acudiente@mail.com', 1, 2, 'ghfsdh', 1),
+(14, 'Javier', 'Chavez', '10010014', '3101112209', 'javier.acudiente@mail.com', 1, 2, 'sthgrfg', 1),
+(15, 'Camila', 'Rios', '10010015', '3101112210', 'camila.acudiente@mail.com', 1, 2,'5q34gfh', 1),
+(16, 'Andres', 'Mendoza', '10010016', '3101112211', 'andres.acudiente@mail.com', 1, 2, 'SDQ3EWR', 1),
+(17, 'Paula', 'Aguilar', '10010017', '3101112212', 'paula.acudiente@mail.com', 1, 2, 'khgs564ru', 1),
+(18, 'Santiago', 'Vega', '10010018', '3101112213', 'santiago.acudiente@mail.com', 1, 2, '546kuirf', 1),
+(19, 'Valeria', 'Silva', '10010019', '3101112214', 'valeria.acudiente@mail.com', 1, 2, '435eyre45g', 1),
+(20, 'Mateo', 'Rojas', '10010020', '3101112215', 'mateo.acudiente@mail.com', 1, 2, '3e4rw2ujtryfgh', 1);
 
 -- 5. DOCENTE_DETALLE (5 registros vinculados a los usuarios 1 al 5)
 INSERT INTO `docente_detalle` (`id_usuario`, `profesion`) VALUES
