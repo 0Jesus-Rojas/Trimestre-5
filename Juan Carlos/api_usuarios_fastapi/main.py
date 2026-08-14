@@ -96,4 +96,4 @@ def eliminar_usuario(id:int):
         "mensaje": "Usuario no encontrado"
     }
 
-#uvicorn main:app --reload
+#py -m uvicorn main:app --reload
