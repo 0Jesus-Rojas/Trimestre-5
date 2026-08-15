@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author Jesus
  */
-public class PriuebaInsertarGrupo {
+public class PruebaInsertarGrupo {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         Grupos miGrupo = new Grupos();

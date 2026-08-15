@@ -10,8 +10,7 @@ import java.util.Scanner;
  *
  * @author Jesus
  */
-public class PruebaConsultarUsuario {
-    UsuarioDAO miUsuario = new UsuarioDAO();
+public class PruebaUsuarioConsultar {
     public static void main(String[] args) {
         Scanner sc = new Scanner (System.in);
         UsuarioDAO miUsuarioDAO = new UsuarioDAO();
