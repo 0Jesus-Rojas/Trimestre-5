@@ -3,9 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Jesus/Documents/Estudio/Trimestre%205/DebiCom/src/java/Modelo/Usuarios.java</file>
-            <file>file:/C:/Users/Jesus/Documents/Estudio/Trimestre%205/DebiCom/src/java/Controlador/UsuarioDAO.java</file>
-            <file>file:/C:/Users/Jesus/Documents/Estudio/Trimestre%205/DebiCom/src/java/Pruebas/PruebaConsultarUsuario.java</file>
+            <file>file:/C:/Users/Jesus/Documents/Estudio/Trimestre%205/Maria%20del%20Pilar/DebiCom/src/java/Controlador/ProductoDAO.java</file>
+            <file>file:/C:/Users/Jesus/Documents/Estudio/Trimestre%205/Maria%20del%20Pilar/DebiCom/src/java/Pruebas/PruebaProductoConsultar.java</file>
+            <file>file:/C:/Users/Jesus/Documents/Estudio/Trimestre%205/Maria%20del%20Pilar/DebiCom/src/java/Pruebas/PruebaProductoInsertar.java</file>
+            <file>file:/C:/Users/Jesus/Documents/Estudio/Trimestre%205/Maria%20del%20Pilar/DebiCom/src/java/Pruebas/PruebaProductoActualizar.java</file>
+            <file>file:/C:/Users/Jesus/Documents/Estudio/Trimestre%205/Maria%20del%20Pilar/DebiCom/src/java/Pruebas/PruebaProductoEliminar.java</file>
+            <file>file:/C:/Users/Jesus/Documents/Estudio/Trimestre%205/Maria%20del%20Pilar/DebiCom/src/java/Controlador/TipoIdentificacionDAO.java</file>
+            <file>file:/C:/Users/Jesus/Documents/Estudio/Trimestre%205/Maria%20del%20Pilar/DebiCom/src/java/Pruebas/PruebaTipoIdentificacionConsultar.java</file>
+            <file>file:/C:/Users/Jesus/Documents/Estudio/Trimestre%205/Maria%20del%20Pilar/DebiCom/src/java/Pruebas/PruebaTipoIdentificacionInsertar.java</file>
+            <file>file:/C:/Users/Jesus/Documents/Estudio/Trimestre%205/Maria%20del%20Pilar/DebiCom/src/java/Pruebas/PruebaTipoIdentificacionActualizar.java</file>
+            <file>file:/C:/Users/Jesus/Documents/Estudio/Trimestre%205/Maria%20del%20Pilar/DebiCom/src/java/Pruebas/PruebaTipoIdentificacionEliminar.java</file>
         </group>
     </open-files>
 </project-private>

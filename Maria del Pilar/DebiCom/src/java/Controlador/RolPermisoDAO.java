@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controlador;
-import Modelo.Productos;
+import Modelo.RolPermisos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -12,92 +12,88 @@ import java.sql.ResultSet;
  *
  * @author Jesus
  */
-public class ProductoDAO {
+public class RolPermisoDAO {
     private Conexion conect = new Conexion();
-    public Productos consultarProducto(String idProducto){
+    
+    public RolPermisos consultarRolPermiso(int idRolPermiso){
         Connection conn = conect.getconn();
-        Productos miProducto = null;
+        RolPermisos miRolPermiso = null;
         
-        try{
-            String querySql = "SELECT nombre, descripcion, precio_final, id_unidades FROM productos WHERE id_producto = ?";
+        try {
+            String querySql = "SELECT codigo, descripcion FROM rol_permisos WHERE id_rol_permiso = ?";
             PreparedStatement ps = conn.prepareStatement(querySql);
-            ps.setString(1, idProducto);
+            ps.setInt(1, idRolPermiso);
             
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                miProducto = new Productos();
+            if (rs.next()) {
+                miRolPermiso = new RolPermisos();
                 
-                miProducto.setNombre(rs.getString("nombre"));
-                miProducto.setDescripcion(rs.getString("descripcion"));
-                miProducto.setPrecioFinal(rs.getFloat("precio_final"));
-                miProducto.setIdUnidades(rs.getInt("id_unidades"));
+                miRolPermiso.setCodigo(rs.getString("codigo"));
+                miRolPermiso.setDescripcion(rs.getString("descripcion"));
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
-            return miProducto;
+            return miRolPermiso;
         }
-        return miProducto;
+        return miRolPermiso;
     }
-    public boolean InsertarProducto(Productos miProducto){
+    public boolean insertarRolPermiso(RolPermisos miRolPermiso){
         boolean insertar = false;
         Connection conn = conect.getconn();
+        
         try{
-            String querySql = "INSERT INTO productos(nombre, descripcion, precio_final, id_unidades) VALUES(?, ?, ?, ?)";
+            String querySql = "INSERT INTO rol_permisos(codigo, descripcion) VALUES (?, ?)";
             PreparedStatement ps = conn.prepareStatement(querySql);
             
-            ps.setString(1, miProducto.getNombre());
-            ps.setString(2, miProducto.getDescripcion());
-            ps.setFloat(3, miProducto.getPrecioFinal());
-            ps.setInt(4, miProducto.getIdUnidades());
+            ps.setString(1, miRolPermiso.getCodigo());
+            ps.setString(2, miRolPermiso.getDescripcion());
             
             ps.executeUpdate();
             insertar = true;
-            System.out.println("Producto registrado");
-            
+            System.out.println("Rol y permiso registrado");
         }catch(SQLException e){
             System.out.println("Error: " + e.getMessage());
         }
         return insertar;
     }
-    public boolean actualizarProducto(Productos miProducto){
+    public boolean actualizarRolPermiso(RolPermisos miRolPermiso){
         boolean actualizar = false;
         Connection conn = conect.getconn();
         
         try{
-            String querySql = "UPDATE productos SET nombre = ?, descripcion = ?, precio_final = ? WHERE id_producto = ?";
+            String querySql = "UPDATE rol_permisos set codigo = ?, descripcion = ? WHERE id_rol_permiso = ?";
             PreparedStatement ps = conn.prepareStatement(querySql);
             
-            ps.setString(1, miProducto.getNombre());
-            ps.setString(2, miProducto.getDescripcion());
-            ps.setFloat(3, miProducto.getPrecioFinal());
-            ps.setInt(4, miProducto.getIdProducto());
+            ps.setString(1, miRolPermiso.getCodigo());
+            ps.setString(2, miRolPermiso.getDescripcion());
+            ps.setInt(3, miRolPermiso.getIdRolPermiso());
             
             int filasAfectadas = ps.executeUpdate();
-            
             if(filasAfectadas > 0){
                 actualizar = true;
             }else{
-                System.out.println("No se encontro el produto");
+                System.out.println("No se encontro el RolPermiso");
             }
         }catch(SQLException e){
             System.out.println("Error: " + e.getMessage());
         }
         return actualizar;
     }
-    public boolean eliminarProducto(int idProducto){
+    public boolean eliminarRolPermiso(int idRolPermiso){
         boolean eliminar = false;
         
-        String querySql = "DELETE FROM productos WHERE id_producto = ?";
+        String querySql = "DELETE FROM rol_permisos WHERE id_rol_permiso = ?";
         Connection conn = conect.getconn();
-        try {
+        
+        try{
             PreparedStatement ps = conn.prepareStatement(querySql);
-            ps.setInt(1, idProducto);
+            ps.setInt(1, idRolPermiso);
             
             int filasAfectadas = ps.executeUpdate();
             if(filasAfectadas > 0){
                 eliminar = true;
             }
-        } catch (SQLException e) {
+        }catch(SQLException e){
             System.out.println("Error: " + e.getMessage());
         }
         return eliminar;

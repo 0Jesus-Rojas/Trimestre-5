@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fromulario</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <div class="formulario">
+            <h2>Formulario</h2>
+            <div class="input-group">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" type="text">
+            </div>
+
+            <div class="input-group">
+                <label for="apellido">Apellido</label>
+                <input id="apellido" type="text">
+            </div>
+
+            <div class="input-group">
+                <label for="tipodocumento">Tipo documento</label>
+                <select id="tipodocumento" required>
+                    <option value="" disabled selected hidden>Seleccione...</option>
+                    <option value="CC">Cédula de Ciudadanía (CC)</option>
+                    <option value="CE">Cédula de Extranjería (CE)</option>
+                    <option value="PA">Pasaporte (PA)</option>
+                    <option value="PEP">Permiso Especial de Permanencia (PEP)</option>
+                    <option value="PPT">Permiso por Protección Temporal (PPT)</option>
+                    <option value="TI">Tarjeta de Identidad (TI)</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="DNI">DNI</label>
+                <input id="DNI" type="text">
+            </div>
+
+            <div class="input-group span-2">
+                <label for="fechanacimiento">Fecha nacimiento</label>
+                <input id="fechanacimiento" type="date">
+            </div>
+            
+            <div class="input-group span-2">
+                <label for="email">email</label>
+                <input id="email" type="text">
+            </div>
+
+            <div class="input-group span-2">
+                <label for="numerotelefono">Numero de telefono</label>
+                <input id="numerotelefono" type="text">
+            </div>
+
+            <div class="input-group span-2">
+                <label for="pais">Pais</label>
+                <input id="pais" type="text">
+            </div>
+
+            <div class="input-group span-2">
+                <label for="ciudad">Ciudad</label>
+                <input id="ciudad" type="text">
+            </div>
+
+            <div class="checkbox-group span-2">
+                <input type="checkbox" id="tratamiento-datos" required>
+                <label for="tratamiento-datos">
+                    Autorizo el tratamiento de mis datos personales según la política de privacidad.
+                </label>
+            </div>
+
+            <button type="submit" class="btn-submit">Enviar Formulario</button>
+        </div>
+    </main>
+</body>
+</html>
