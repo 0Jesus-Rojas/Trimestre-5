@@ -6,11 +6,11 @@ package Modelo;
 
 /**
  *
- * @author Jesus
+ * @author Aprendiz
  */
 public class TipoPago {
     private int idTipoPago;
-    private int nombrePago;
+    private String nombrePago;
 
     public int getIdTipoPago() {
         return idTipoPago;
@@ -20,11 +20,11 @@ public class TipoPago {
         this.idTipoPago = idTipoPago;
     }
 
-    public int getNombrePago() {
+    public String getNombrePago() {
         return nombrePago;
     }
 
-    public void setNombrePago(int nombrePago) {
+    public void setNombrePago(String nombrePago) {
         this.nombrePago = nombrePago;
     }
 }
