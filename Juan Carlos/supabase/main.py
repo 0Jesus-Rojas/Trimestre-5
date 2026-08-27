@@ -97,9 +97,13 @@ def crear_usuario(nombre:str, apellido: str, telefono: str, edad: int, rol_id: i
 # ----- ENDPONTS TABLA: PROGRAMAS -----
 
 @app.get("/programas")
+def listar_programas():
+    return programas
+
+@app.post("/programas")
 def crear_progrma(nombre:str, codigo:str):
     nuevo_id = len(programas) + 1
-    nuevo_prog = {"id": nuevo_id, "nombre": nombre, "codifo": codigo}
+    nuevo_prog = {"id": nuevo_id, "nombre": nombre, "codigo": codigo}
     programas.append(nuevo_prog)
     return nuevo_prog
 
