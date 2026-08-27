@@ -3,90 +3,95 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controlador;
-import Modelo.TipoPago;
+
+import Modelo.Unidades;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Jesus
  */
-public class TipoPagoDAO {
+public class UnidadesDAO {
     private Conexion conect = new Conexion();
-    public TipoPago consultarTipoPago(int idTipoPago){
+
+    public Unidades consultarUnidad(int idUnidad) {
         Connection conn = conect.getconn();
-        TipoPago miTipoPago = null;
-        
-        try{
-            String querySql = "SELECT nombre_pago FROM tipo_pago WHERE id_tipo_pago = ?";
+        Unidades miUnidad = null;
+
+        try {
+            String querySql = "SELECT nombre_unidad FROM unidades WHERE id_unidad = ?";
             PreparedStatement ps = conn.prepareStatement(querySql);
-            ps.setInt(1, idTipoPago);
-            
+            ps.setInt(1, idUnidad);
+
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                miTipoPago = new TipoPago();
-                
-                miTipoPago.setNombrePago(rs.getString("nombre_pago"));
+            if (rs.next()) {
+                miUnidad = new Unidades();
+                miUnidad.setIdUnidad(idUnidad);
+                miUnidad.setNombreUnidad(rs.getString("nombre_unidad"));
             }
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
-            return miTipoPago;
+            return miUnidad;
         }
-        return miTipoPago;
+        return miUnidad;
     }
-    public boolean InsertarTipoPago(TipoPago miTipoPago){
+
+    public boolean insertarUnidad(Unidades miUnidad) {
         boolean insertar = false;
         Connection conn = conect.getconn();
-        try{
-            String querySql = "INSERT into tipo_pago (nombre_pago) VALUES (?)";
+        try {
+            String querySql = "INSERT INTO unidades (nombre_unidad) VALUES (?)";
             PreparedStatement ps = conn.prepareStatement(querySql);
-            
-            ps.setString(1, miTipoPago.getNombrePago());
-            
+
+            ps.setString(1, miUnidad.getNombreUnidad());
+
             ps.executeUpdate();
             insertar = true;
-            System.out.println("Tipo pago registrado");
-        }catch(SQLException e){
-            System.out.println("Error: " +e.getMessage());
+            System.out.println("Unidad registrada");
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
         }
         return insertar;
     }
-    public boolean actualizarTipoPago(TipoPago miTipoPago){
+
+    public boolean actualizarUnidad(Unidades miUnidad) {
         boolean actualizar = false;
         Connection conn = conect.getconn();
-        
+
         try {
-            String querySql = "UPDATE tipo_pago SET nombre_pago = ? WHERE id_tipo_pago = ?";
+            String querySql = "UPDATE unidades SET nombre_unidad = ? WHERE id_unidad = ?";
             PreparedStatement ps = conn.prepareStatement(querySql);
-            
-            ps.setString(1, miTipoPago.getNombrePago());
-            ps.setInt(2, miTipoPago.getIdTipoPago());
-            
+
+            ps.setString(1, miUnidad.getNombreUnidad());
+            ps.setInt(2, miUnidad.getIdUnidad());
+
             int filasAfectadas = ps.executeUpdate();
-            
-            if (filasAfectadas > 0){
+
+            if (filasAfectadas > 0) {
                 actualizar = true;
-            }else{
-                System.out.println("No se encontro el ID");
+            } else {
+                System.out.println("No se encontró el ID");
             }
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
         }
         return actualizar;
     }
-    public boolean eliminarTipoPago(int idTipoPago){
+
+    public boolean eliminarUnidad(int idUnidad) {
         boolean eliminar = false;
-        
-        String querySql = "DELETE FROM tipo_pago WHERE id_tipo_pago = ?";
+
+        String querySql = "DELETE FROM unidades WHERE id_unidad = ?";
         Connection conn = conect.getconn();
         try {
             PreparedStatement ps = conn.prepareStatement(querySql);
-            ps.setInt(1, idTipoPago);
-            
+            ps.setInt(1, idUnidad);
+
             int filasAfectadas = ps.executeUpdate();
-            if(filasAfectadas > 0){
+            if (filasAfectadas > 0) {
                 eliminar = true;
             }
         } catch (SQLException e) {
