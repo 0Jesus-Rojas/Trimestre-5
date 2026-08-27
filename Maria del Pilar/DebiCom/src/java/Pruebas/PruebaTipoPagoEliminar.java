@@ -4,10 +4,25 @@
  */
 package Pruebas;
 
-/**
- *
- * @author Jesus
- */
+import Controlador.TipoPagoDAO;
+import java.util.Scanner;
+
 public class PruebaTipoPagoEliminar {
-    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        TipoPagoDAO dao = new TipoPagoDAO();
+        
+        try {
+            System.out.print("Ingrese el ID del tipo de pago que desea eliminar: ");
+            int idTipoPago = sc.nextInt();
+            
+            if (dao.eliminarTipoPago(idTipoPago)) {
+                System.out.println("Tipo de pago eliminado correctamente");
+            } else {
+                System.out.println("No se encontro el tipo de pago para eliminar");
+            }
+        } catch (Exception e) {
+            System.out.println("No se pudo eliminar el tipo de pago");
+        }
+    }
 }

@@ -4,10 +4,29 @@
  */
 package Pruebas;
 
+import Controlador.TipoIdentificacionDAO;
+import java.util.Scanner;
+
 /**
  *
  * @author Jesus
  */
 public class PruebaTipoIdentificacionEliminar {
-    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        TipoIdentificacionDAO dao = new TipoIdentificacionDAO();
+
+        try {
+            System.out.print("Ingrese el ID del tipo de identificación que desea eliminar: ");
+            int idTipoDocumento = sc.nextInt();
+
+            if (dao.eliminarTipoDocumento(idTipoDocumento)) {
+                System.out.println("Tipo de identificación eliminado");
+            } else {
+                System.out.println("No se encontró el registro para eliminar");
+            }
+        } catch (Exception e) {
+            System.out.println("Error en el proceso de eliminación: " + e.getMessage());
+        }
+    }
 }

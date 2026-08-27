@@ -18,19 +18,19 @@ USE `debicom` ;
 -- Table `debicom`.`tipo_identificaciones`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `debicom`.`tipo_identificaciones` (
-  `id_tipo_identificacion` INT NOT NULL,
+  `id_tipo_identificacion` INT NOT NULL AUTO_INCREMENT,
   `nombre_tipo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_tipo_identificacion`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `debicom`.`perfiles`
+-- Table `debicom`.`roles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `debicom`.`perfiles` (
-  `id_perfil` INT NOT NULL,
-  `nombre_perfil` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_perfil`))
+CREATE TABLE IF NOT EXISTS `debicom`.`roles` (
+  `id_rol` INT NOT NULL AUTO_INCREMENT,
+  `nombre_rol` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_rol`))
 ENGINE = InnoDB;
 
 
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `debicom`.`usuarios` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Usuario_Perfiles1`
     FOREIGN KEY (`id_perfil`)
-    REFERENCES `debicom`.`perfiles` (`id_perfil`)
+    REFERENCES `debicom`.`roles` (`id_rol`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -73,7 +73,7 @@ ENGINE = InnoDB;
 -- Table `debicom`.`tipo_pago`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `debicom`.`tipo_pago` (
-  `id_tipo_pago` INT NOT NULL,
+  `id_tipo_pago` INT NOT NULL AUTO_INCREMENT,
   `nombre_pago` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_tipo_pago`))
 ENGINE = InnoDB;
@@ -201,7 +201,7 @@ ENGINE = InnoDB;
 -- Table `debicom`.`rol_permisos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `debicom`.`rol_permisos` (
-  `id_rol_permiso` INT NOT NULL,
+  `id_rol_permiso` INT NOT NULL AUTO_INCREMENT,
   `codigo` VARCHAR(45) NOT NULL,
   `descripcion` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_rol_permiso`))
@@ -209,17 +209,17 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `debicom`.`perfiles_y_permisos`
+-- Table `debicom`.`roles_y_permisos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `debicom`.`perfiles_y_permisos` (
-  `id_perfil` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `debicom`.`roles_y_permisos` (
+  `id_rol` INT NOT NULL,
   `id_rol_permiso` INT NOT NULL,
-  PRIMARY KEY (`id_perfil`, `id_rol_permiso`),
+  PRIMARY KEY (`id_rol`, `id_rol_permiso`),
   INDEX `fk_Perfiles_has_RolPermisos_RolPermisos1_idx` (`id_rol_permiso` ASC) ,
-  INDEX `fk_Perfiles_has_RolPermisos_Perfiles1_idx` (`id_perfil` ASC) ,
+  INDEX `fk_Perfiles_has_RolPermisos_Perfiles1_idx` (`id_rol` ASC) ,
   CONSTRAINT `fk_Perfiles_has_RolPermisos_Perfiles1`
-    FOREIGN KEY (`id_perfil`)
-    REFERENCES `debicom`.`perfiles` (`id_perfil`)
+    FOREIGN KEY (`id_rol`)
+    REFERENCES `debicom`.`roles` (`id_rol`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Perfiles_has_RolPermisos_RolPermisos1`

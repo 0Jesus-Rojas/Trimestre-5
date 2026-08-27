@@ -47,7 +47,7 @@ public class TipoIdentificacionDAO {
         boolean insertar = false;
         Connection conn = conect.getconn();
         try {
-            String querySql = "INSERT INTO tipo_identificacion(nombre_tipo) VALUES (?)";
+            String querySql = "INSERT INTO tipo_identificaciones(nombre_tipo) VALUES (?)";
             PreparedStatement ps = conn.prepareStatement(querySql);
             ps.setString(1, miTipoIdentificacion.getNombreTipo());
 
@@ -65,10 +65,11 @@ public class TipoIdentificacionDAO {
         Connection conn = conect.getconn();
 
         try {
-            String querySql = "UPDATE tipo_identificaciones SET nombre_tipo WHERE id_tipo_identificacion = ?";
+            String querySql = "UPDATE tipo_identificaciones SET nombre_tipo = ? WHERE id_tipo_identificacion = ?";
             PreparedStatement ps = conn.prepareStatement(querySql);
 
             ps.setString(1, miTipoIdentificacion.getNombreTipo());
+            ps.setInt(2, miTipoIdentificacion.getIdTipoIdentificacion());
 
             int filasAfectadas = ps.executeUpdate();
 
@@ -86,7 +87,7 @@ public class TipoIdentificacionDAO {
     public boolean eliminarTipoDocumento(int idTipoDocumento) {
         boolean eliminar = false;
 
-        String querySql = "DELETE FROM tipo_identificacion WHERE id_tipo_identificacion = ?";
+        String querySql = "DELETE FROM tipo_identificaciones WHERE id_tipo_identificacion = ?";
         Connection conn = conect.getconn();
         try {
             PreparedStatement ps = conn.prepareStatement(querySql);

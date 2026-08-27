@@ -15,8 +15,8 @@ INSERT INTO tipo_identificaciones (id_tipo_identificacion, nombre_tipo) VALUES
 (4,'NIT'),
 (5,'Pasaporte');
 
--- 2. PERFILES
-INSERT INTO perfiles (id_perfil, nombre_perfil) VALUES
+-- 2. Roles
+INSERT INTO roles (id_rol, nombre_rol) VALUES
 (1,'Administrador'),
 (2,'Supervisor'),
 (3,'Vendedor'),
@@ -386,8 +386,8 @@ INSERT INTO rol_permisos (id_rol_permiso,codigo,descripcion) VALUES
 (19,'PERFILES_GESTIONAR','Gestionar perfiles'),
 (20,'PERMISOS_GESTIONAR','Gestionar permisos');
 
--- 12. PERFILES_Y_PERMISOS
-INSERT INTO perfiles_y_permisos (id_perfil,id_rol_permiso) VALUES
+-- 12. ROLES_Y_PERMISOS
+INSERT INTO roles_y_permisos (id_rol,id_rol_permiso) VALUES
 (1,1),
 (1,2),
 (1,3),
@@ -447,28 +447,6 @@ INSERT INTO perfiles_y_permisos (id_perfil,id_rol_permiso) VALUES
 (5,14),
 (5,17),
 (5,18);
-
--- =========================================================
--- CONSULTAS RAPIDAS PARA COMPROBAR LOS DATOS
--- =========================================================
-SELECT COUNT(*) AS total_usuarios FROM usuarios;
-SELECT COUNT(*) AS total_clientes FROM clientes;
-SELECT COUNT(*) AS total_productos FROM productos;
-SELECT COUNT(*) AS total_pagos FROM pagos;
-SELECT COUNT(*) AS total_facturas FROM cabeza_facturas;
-SELECT COUNT(*) AS total_detalles FROM detalle_facturas;
-
--- Ejemplo de consulta con JOIN
-SELECT cf.numero_factura,
-       CONCAT(u.nombre,' ',u.apellido) AS cliente,
-       cf.subtotal,
-       tp.nombre_pago AS forma_pago
-FROM cabeza_facturas cf
-JOIN clientes c ON cf.id_cliente = c.id_cliente
-JOIN usuarios u ON c.id_usuario = u.id_usuario
-JOIN pagos p ON cf.id_pago = p.id_pago
-JOIN tipo_pago tp ON p.id_tipo_pago = tp.id_tipo_pago
-ORDER BY cf.id_cabeza_factura;
 
 -- =========================================================
 -- EJEMPLOS CRUD (opcionales; ejecutar individualmente)
